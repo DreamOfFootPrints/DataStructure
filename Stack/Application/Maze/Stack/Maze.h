@@ -39,7 +39,7 @@ void PrintMaze(int* a, int n)
 	{
 		for (int j = 0; j < n; ++j)
 		{
-			cout << a[i*n + j];
+			cout << a[i*n + j]<<" ";
 		}
 		cout << endl;
 	}
@@ -108,6 +108,7 @@ bool SearchMazeSize(int* a, int n, Pos entry, stack<Pos>& paths)
 			paths.push(next);
 			continue;
 		}
+		a[cur._row*n + cur._col] = 3;
 		paths.pop();
 	}
 	return false;

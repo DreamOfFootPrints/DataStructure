@@ -6,6 +6,7 @@ void Test1()
 {
 	int a[N][N] = { 0 };
 	GetMaze((int*)a, N);
+	cout << "รินฌฃบ" << endl;
 	PrintMaze((int*)a, N);
 	stack<Pos> paths;
 	Pos entry = { 2,0 };//ศ๋ฟฺื๘ฑ๊
