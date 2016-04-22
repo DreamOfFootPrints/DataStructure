@@ -35,7 +35,7 @@ public:
 		{
 			swap(i, j);//上三角形转换为下三角形
 		}
-		return _a[i*(*+1) / 2 + j];
+		return _a[i*(i+1) / 2 + j];
 	}
 
 protected:
