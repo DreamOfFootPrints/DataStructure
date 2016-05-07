@@ -54,6 +54,68 @@ protected:
 		_InOrderThreading(_root, prev);
 	}
 
+	void PrevOrderThreading()
+	{
+		Node* prev = NULL;
+		_PrevOrderThreading(_root, prev);
+	}
+
+
+	void InorderThd()
+	{
+		Node* cur = _root;
+		while (cur)
+		{
+			//1、找最左的节点
+			while (cur->_leftTag == LINK)
+			{
+				cur = cur->_left;
+			}
+			cout << cur->_data << " ";
+			while (cur->_rightTag == THREAD)
+			{
+				cur = cur->_right;
+				cout << cur->_data << " ";
+			}
+			cur = cur->_right;
+		}
+		cout << endl;
+	}
+
+	//void PrevOrderThd()
+	//{
+	//	Node* cur = _root;
+	//	while (cur)
+	//	{
+	//		while (cur->_leftTag==LINK)
+	//		{
+	//			cout << cur->_data << " ";
+	//			cur = cur->_left;
+	//		}
+	//		cout << cur->_data << " ";
+	//		cur = cur->_right;
+	//	}
+	//	cout << endl;
+	//}
+
+	void PrevOrderThd()
+	{
+		Node* cur = _root;
+		while (cur)
+		{
+			cout << cur->_data << " ";
+			if (cur->_leftTag == LINK)
+			{
+				cur = cur->_left;
+			}
+			else
+			{
+				cur = cur->_right;
+			}
+		}
+		cout << endl;
+	}
+
 protected:
 	void _InOrderThreading(Node* cur,Node* prev)//现在改变不了未来的事情，但是未来可以坐个时光机去改变过去的事情
 	{
@@ -75,6 +137,38 @@ protected:
 		prev = cur;
 		_InOrderThreading(cur->_right, prev);
 	}
+
+	void _PrevOrderThreading(Node* cur, Node*& prev)
+	{
+		if (cur == NULL)
+		{
+			return;
+		}
+		if (cur->_left == NULL)
+		{
+			cur->_leftTag = THREAD;
+			cur->_left = prev;
+		}
+		if (prev&&prev->_right == NULL)
+		{
+			prev->_rightTag = THREAD;
+			prev->_right = cur;
+		}
+		prev = cur;
+		if (cur->_leftTag = LINK)
+		{
+			_PrevOrderThreading(cur->_left, prev);
+		}
+		if (cur->_rightTag == LINK)
+		{
+			_PrevOrderThreading(cur->_right, prev);
+		}
+
+
+
+	}
+
+
 private:
 	Node* _root;
 
