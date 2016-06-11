@@ -22,7 +22,7 @@ void InsertSort(int arr[], int size)
 	if (arr == NULL || size <= 0)
 		return;
 
-	for (int i =1; i < size-1; i++)
+	for (int i =0; i < size-1; i++)
 	{
 		int end = i;//一个有序序列的结尾
 		int tmp = arr[i+1];
