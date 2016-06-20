@@ -63,12 +63,12 @@ int PartSort1(int arr[], int left, int right)//返回key位置对应的下标
 		}
 	}
 
-	if (arr[begin]>arr[right])//两个元素组成的区间有序
+	if (arr[begin]>arr[right])//由于begin先，所以begin所在的位置一定是大于key值所在的位置
 	{
 		swap(arr[begin], arr[right]);
 		return begin;
 	}
-	else
+	else//两个元素组成的区间有序
 	{
 		return right;
 	}
